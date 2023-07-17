@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <a href="http://127.0.0.1:5000" id="name">BRAINCHILD</a>
+        <a href="http://127.0.0.1:5000/app"><button class="headbutt">Chatbot</button></a>
+        <a href="http://127.0.0.1:5000/playground"><button class="headbutt">Playground</button></a>
+    </div>
+    <div class="body">
+        <strong><h2 class="welcometxt">WELCOME</h2></strong>
+        <h3 class="bodytxt">Sản phẩm của thí sinh dự thi Nguyễn Hoàng Long</h3>
+    </div>
+    <div class='about'>
+        <h2 class="abouttitle" align='center'>About Brainchild</h2>
+        <h3 class="aboutdes" id="p1">Tên sản phẩm</h3>
+        <h3 class="aboutdes" id="p2">Playground</h3>
+        <h3 class="aboutdes" id="p3">Chatbot</h3>
+        <h3 class="aboutdes" id="p4">Hướng dẫn</h3>
+    </div>
+</body>
+<script src="{{ url_for('static',filename='mains/main.js') }}"></script>
+</html>

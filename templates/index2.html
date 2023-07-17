@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style2.css') }}">
+</head>
+<body>
+    <div class="header">
+        <a href="http://127.0.0.1:5000"><h2 id="name">BRAINCHILD</h2></a>
+        <a href="http://127.0.0.1:5000/app"><button class="headbutt">Chatbot</button></a>
+        <a href="http://127.0.0.1:5000/playground"><button class="headbutt">Playground</button></a>
+    </div>
+    <div class="body">
+        <div class="chatbox">
+            <div class="chatboxhead">
+                <h2 class="chatboxheadtxt">Chatbot</h2>
+            </div>
+            <div class="chatboxbody">
+                <div></div>
+            </div>
+            <div class="chatboxbot">
+                <textarea class="chat" name="input" ></textarea>
+                <button class="send">📩</button>
+            </div>
+    </div>
+    <script src="{{ url_for('static',filename='mains/main2.js') }}"></script>
+</body>
+</html>

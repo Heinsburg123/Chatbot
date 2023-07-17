@@ -1,0 +1,1280 @@
+let canvas= document.querySelector('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let c=canvas.getContext('2d');
+let roundind=-1;
+let int =1
+let matches=0;
+let json=[
+    [
+        [
+            [636,160,0],
+            [770,290,0],
+            [636,423,0],
+            [503,290,0],
+        ],
+        [
+            [493,128,0],
+            [784,128,0],
+            [511,348,0],
+            [637,348,0],
+            [766,348,0],
+            [765,458,0],
+            [638,458,0]
+        ],
+        [
+            [633,159,0],
+            [769,262,0],
+            [735,447,0],
+            [531,447,0],
+            [467,262,0]
+        ],
+        [
+            [493,154,0],
+            [587,154,0],
+            [697,154,0],
+            [791,154,0],
+            [641,286,0],
+            [493,376,0],
+            [791,376,0],
+            [587,489,0],
+            [697,489,0]
+        ],
+        [
+            [495,180,0],
+            [714,139,0],
+            [814,257,0],
+            [754,476,0],
+            [555,476,0],
+            [456,356,0]
+        ],
+        [
+            [636,158,0],
+            [500,320,0],
+            [780,320,0],
+            [500,484,0],
+            [639,484,0],
+            [780,484,0]
+        ],
+        [
+            [496,134,0],
+            [636,216,0],
+            [773,134,0],
+            [496,216,0],
+            [773,216,0],
+            [496,487,0],
+            [636,487,0],
+            [773,487,0],
+            [555,372,0],
+            [712,372,0]
+        ],
+        [
+            [634,170,0],
+            [448,331,0],
+            [705,331,0],
+            [821,331,0],
+            [634,489,0]
+        ],
+        [
+            [533,131,0],
+            [741,131,0],
+            [405,259,0],
+            [637,234,0],
+            [868,259,0],
+            [509,362,0],
+            [765,362,0],
+            [637,491,0]
+        ],
+        [
+            [636,185,0],
+            [745,185,0],
+            [492,222,0],
+            [492,329,0],
+            [636,329,0],
+            [779,329,0],
+            [528,470,0],
+            [636,470,0],
+            [779,433,0]
+        ],
+        [
+            [587,137,0],
+            [689,137,0],
+            [500,206,0],
+            [775,206,0],
+            [570,310,0],
+            [706,310,0],
+            [639,482,0]
+        ],
+        [
+            [580,155,0],
+            [794,155,0],
+            [486,251,0],
+            [677,251,0],
+            [486,463,0],
+            [677,463,0],
+            [794,367,0]
+        ],
+        [
+            [642,140,0],
+            [583,169,0],
+            [701,169,0],
+            [596,259,0],
+            [686,259,0],
+            [521,334,0],
+            [642,334,0],
+            [760,334,0],
+            [522,500,0],
+            [596,500,0],
+            [613,439,0],
+            [671,439,0],
+            [686,500,0],
+            [760,500,0]
+        ],
+        [
+            [501,150,0],
+            [779,150,0],
+            [640,269,0],
+            [501,303,0],
+            [777,303,0],
+            [501,407,0],
+            [640,494,0],
+            [777,407,0]
+        ],
+        [
+            [639,130,0],
+            [517,161,0],
+            [579,161,0],
+            [700,161,0],
+            [761,161,0],
+            [532,252,0],
+            [746,252,0],
+            [593,298,0],
+            [686,298,0],
+            [547,344,0],
+            [732,344,0],
+            [624,422,0],
+            [655,422,0],
+            [593,467,0],
+            [686,467,0],
+            [639,513,0]
+        ],
+        [
+            [639,162,0],
+            [639,305,0],
+            [510,403,0],
+            [639,403,0],
+            [768,403,0],
+            [639,500,0]
+        ],
+        [
+            [640,126,0],
+            [640,202,0],
+            [537,272,0],
+            [744,272,0],
+            [640,318,0],
+            [640,409,0],
+            [640,482,0]
+        ],
+        [
+            [600,160,0],
+            [785,160,0],
+            [489,325,0],
+            [639,325,0],
+            [711,325,0],
+            [600,493,0],
+            [785,493,0]
+        ],
+        [
+            [570,188,0],
+            [704,188,0],
+            [528,250,0],
+            [751,250,0],
+            [576,298,0],
+            [640,298,0],
+            [704,298,0],
+            [528,346,0],
+            [640,363,0],
+            [751,346,0],
+            [528,427,0],
+            [608,411,0],
+            [671,411,0],
+            [751,427,0],
+            [576,507,0],
+            [640,507,0],
+            [704,507,0],
+        ],
+        [
+            [640,154,0],
+            [540,252,0],
+            [740,252,0],
+            [540,418,0],
+            [740,418,0],
+            [640,474,0]
+        ],
+        [
+            [563,164,0],
+            [638,164,0],
+            [713,164,0],
+            [488,278,0],
+            [601,333,0],
+            [679,333,0],
+            [792,278,0],
+            [488,448,0],
+            [638,500,0],
+            [792,448,0]
+        ],
+        [
+            [640,112,0],
+            [640,203,0],
+            [492,291,0],
+            [783,291,0],
+            [496,383,0],
+            [783,383,0],
+            [532,470,0],
+            [604,506,0],
+            [675,506,0],
+            [746,470,0]
+        ],
+        [
+            [641,162,0],
+            [561,275,0],
+            [721,275,0],
+            [544,340,0],
+            [738,340,0],
+            [561,403,0],
+            [721,403,0],
+            [641,517,0]
+        ],
+        [
+            [577,148,0],
+            [700,148,0],
+            [577,246,0],
+            [700,246,0],
+            [577,390,0],
+            [700,390,0],
+            [577,511,0],
+            [700,511,0]
+        ],
+        [
+            [639,138,0],
+            [469,330,0],
+            [575,330,0],
+            [702,330,0],
+            [810,330,0],
+            [639,525,0]
+        ],
+        [
+            [642,159,0],
+            [642,244,0],
+            [642,314,0],
+            [642,383,0],
+            [530,426,0],
+            [754,426,0],
+            [642,495,0]
+        ],
+        [
+            [552,154,0],
+            [733,154,0],
+            [552,264,0],
+            [642,264,0],
+            [733,264,0],
+            [534,390,0],
+            [750,390,0],
+            [642,517,0]
+        ],
+        [
+            [476,157,0],
+            [685,157,0],
+            [476,365,0],
+            [726,220,0],
+            [517,429,0],
+            [685,386,0],
+            [811,283,0],
+            [581,512,0],
+            [811,429,0],
+            [726,512,0]
+        ],
+        [
+            [636,182,0],
+            [531,231,0],
+            [636,231,0],
+            [741,231,0],
+            [572,297,0],
+            [636,297,0],
+            [702,297,0],
+            [572,379,0],
+            [636,379,0],
+            [702,379,0],
+            [531,445,0],
+            [636,445,0],
+            [741,445,0],
+            [636,497,0]
+        ],
+        [
+            [636,156,0],
+            [512,279,0],
+            [636,279,0],
+            [759,279,0],
+            [512,402,0],
+            [636,402,0],
+            [636,492,0],
+            [759,492,0]
+        ]
+    ],
+    [
+        [   
+            [0,1,0],
+            [0,2,0],
+            [0,3,0],
+            [1,2,0],
+            [2,3,0],
+        ],
+        [
+            [0,1,0],
+            [1,2,0],
+            [2,3,0],
+            [0,4,0],
+            [3,4,0],
+            [4,5,0],
+            [5,6,0],
+            [6,3,0]
+        ],
+        [
+            [0,2,0],
+            [0,3,0],
+            [1,3,0],
+            [1,4,0],
+            [2,4,0]
+        ],
+        [
+            [0,1,0],
+            [0,5,0],
+            [1,4,0],
+            [2,4,0],
+            [2,3,0],
+            [3,6,0],
+            [4,5,0],
+            [4,6,0],
+            [4,7,0],
+            [4,8,0],
+            [5,6,0],
+            [5,7,0],
+            [6,8,0]
+        ],
+        [
+            [0,2,0],
+            [0,3,0],
+            [0,4,0],
+            [1,3,0],
+            [1,5,0],
+            [2,3,0],
+            [3,4,0],
+            [3,5,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,2,0],
+            [1,3,0],
+            [1,4,0],
+            [2,5,0],
+            [2,4,0],
+            [3,4,0],
+            [4,5,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,2,0],
+            [1,3,0],
+            [1,4,0],
+            [3,5,0],
+            [4,7,0],
+            [5,6,0],
+            [6,7,0],
+            [6,8,0],
+            [6,9,0],
+            [8,9,0]
+        ],
+        [
+            [0,2,0],
+            [0,3,0],
+            [1,2,0],
+            [2,3,0],
+            [2,4,0],
+            [3,4,0]
+        ],
+        [
+            [0,2,0],
+            [0,3,0],
+            [1,3,0],
+            [1,4,0],
+            [2,5,0],
+            [3,5,0],
+            [3,6,0],
+            [4,6,0],
+            [5,6,0],
+            [5,7,0],
+            [6,7,0],
+            [3,7,0]
+        ],
+        [
+            [0,1,0],
+            [0,4,0],
+            [1,4,0],
+            [2,3,0],
+            [2,4,0],
+            [3,4,0],
+            [5,8,0],
+            [4,5,0],
+            [4,8,0],
+            [4,6,0],
+            [4,7,0],
+            [6,7,0]
+        ],
+        [
+            [0,2,0],
+            [2,3,0],
+            [2,4,0],
+            [1,3,0],
+            [1,5,0],
+            [0,4,0],
+            [3,5,0],
+            [4,5,0],
+            [4,6,0],
+            [5,6,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,3,0],
+            [2,3,0],
+            [1,6,0],
+            [2,4,0],
+            [4,5,0],
+            [5,6,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,3,0],
+            [2,4,0],
+            [3,4,0],
+            [3,5,0],
+            [3,6,0],
+            [4,6,0],
+            [4,7,0],
+            [5,8,0],
+            [8,9,0],
+            [9,10,0],
+            [10,11,0],
+            [11,12,0],
+            [12,13,0],
+            [13,7,0]
+        ],
+        [
+            [0,2,0],
+            [1,2,0],
+            [0,3,0],
+            [1,4,0],
+            [3,4,0],
+            [3,5,0],
+            [3,6,0],
+            [4,6,0],
+            [4,7,0],
+            [5,6,0],
+            [6,7,0],
+            [2,6,0]
+        ],
+        [
+            [0,2,0],
+            [0,3,0],
+            [1,5,0],
+            [1,8,0],
+            [2,8,0],
+            [3,7,0],
+            [4,7,0],
+            [4,6,0],
+            [5,7,0],
+            [6,8,0],
+            [7,9,0],
+            [8,10,0],
+            [9,11,0],
+            [10,12,0],
+            [11,13,0],
+            [12,14,0],
+            [13,15,0],
+            [14,15,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [0,4,0],
+            [1,2,0],
+            [1,4,0],
+            [1,3,0],
+            [2,3,0],
+            [3,4,0],
+            [2,5,0],
+            [3,5,0],
+            [4,5,0]
+        ],
+        [
+            [0,2,0],
+            [2,4,0],
+            [1,2,0],
+            [2,3,0],
+            [2,5,0],
+            [4,3,0],
+            [4,5,0],
+            [4,6,0],
+            [3,5,0],
+            [5,6,0],
+            [0,3,0],
+            [1,3,0],
+            [3,6,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [0,3,0],
+            [0,4,0],
+            [0,5,0],
+            [1,6,0],
+            [2,5,0],
+            [3,4,0],
+            [4,5,0],
+            [4,6,0],
+            [5,6,0],
+        ],
+        [
+            [0,2,0],
+            [0,5,0],
+            [1,5,0],
+            [1,3,0],
+            [2,4,0],
+            [3,6,0],
+            [4,7,0],
+            [6,9,0],
+            [7,10,0],
+            [8,11,0],
+            [8,12,0],
+            [11,15,0],
+            [12,15,0],
+            [9,13,0],
+            [10,14,0],
+            [13,16,0],
+            [14,15,0],
+            [15,16,0],
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,2,0],
+            [1,5,0],
+            [1,3,0],
+            [2,5,0],
+            [2,4,0],
+            [3,4,0]
+        ],
+        [
+            [0,1,0],
+            [0,3,0],
+            [1,3,0],
+            [1,4,0],
+            [1,5,0],
+            [1,6,0],
+            [1,2,0],
+            [2,6,0],
+            [3,4,0],
+            [3,7,0],
+            [3,8,0],
+            [5,6,0],
+            [6,8,0],
+            [6,9,0],
+            [7,8,0],
+            [8,9,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [0,3,0],
+            [1,4,0],
+            [1,5,0],
+            [2,4,0],
+            [3,5,0],
+            [1,6,0],
+            [1,7,0],
+            [1,8,0],
+            [1,9,0],
+            [6,7,0],
+            [8,9,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [0,7,0],
+            [1,4,0],
+            [2,3,0],
+            [3,6,0],
+            [6,7,0],
+            [4,5,0],
+            [5,7,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,3,0],
+            [2,3,0],
+            [3,4,0],
+            [3,5,0],
+            [4,5,0],
+            [4,6,0],
+            [4,7,0],
+            [6,7,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [0,3,0],
+            [0,4,0],
+            [1,5,0],
+            [2,5,0],
+            [3,5,0],
+            [4,5,0]
+        ],
+        [
+            [0,1,0],
+            [0,4,0],
+            [0,5,0],
+            [1,4,0],
+            [1,2,0],
+            [1,5,0],
+            [2,4,0],
+            [2,3,0],
+            [2,5,0],
+            [3,5,0],
+            [4,5,0],
+            [4,6,0],
+            [5,6,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [1,4,0],
+            [2,3,0],
+            [3,4,0],
+            [3,5,0],
+            [3,6,0],
+            [3,7,0],
+            [5,7,0],
+            [6,7,0]
+        ],
+        [
+            [0,1,0],
+            [0,2,0],
+            [0,5,0],
+            [1,2,0],
+            [3,4,0],
+            [3,5,0],
+            [4,5,0],
+            [5,6,0],
+            [5,7,0],
+            [7,9,0],
+            [9,8,0],
+            [8,6,0]
+        ],
+        [
+            [0,2,0],
+            [1,2,0],
+            [1,10,0],
+            [2,3,0],
+            [2,5,0],
+            [3,12,0],
+            [4,5,0],
+            [4,7,0],
+            [5,6,0],
+            [5,8,0],
+            [6,9,0],
+            [7,8,0],
+            [8,9,0],
+            [8,11,0],
+            [10,11,0],
+            [11,12,0],
+            [11,13,0]
+        ],
+        [
+            [0,1,0],
+            [0,3,0],
+            [1,2,0],
+            [1,4,0],
+            [1,5,0],
+            [2,5,0],
+            [2,3,0],
+            [2,7,0],
+            [3,7,0],
+            [4,5,0],
+            [5,6,0],
+            [6,7,0],
+        ]
+    ]
+]
+
+//initiate
+let next=document.querySelector('.next');
+let back=document.querySelector('.back');
+let sign=document.querySelector('.sign');
+let retry=document.querySelector('.retry');
+let play=document.querySelector('.start');
+let mode=document.querySelector('.mode');
+let grid=document.querySelector('.grid');
+let vid1=document.querySelector('.vid1');
+let vid2=document.querySelector('.vid2');
+let vid3=document.querySelector('.vid3');
+let volumn=document.querySelector('.volumn');
+let slider=document.querySelector('.slider');
+let BGM=document.querySelector('.BGM');
+let choose=document.querySelector('.choose');
+let currentmode=document.querySelector('.currentmode');
+vid1.volume=0.5;
+vid2.volume=0.5;
+vid3.volume=0.5;
+vid2.pause();
+vid3.pause();
+for(let i=1;i<=30;i++)
+{
+    let lv=document.createElement('button');
+    grid.appendChild(lv);
+    lv.textContent=i;
+    lv.setAttribute("style","display","flex")
+    lv.addEventListener('click',()=>{
+        if(endgame[i-2]==1||i==1)
+        {
+            roundind=i-1;
+            round();
+        }
+    });
+    lv.style.width='30%';
+    lv.style.height='70%';
+    lv.style.borderRadius ='12px';
+    lv.style.fontSize='large';
+    lv.style.fontWeight='800';
+    lv.style.fontFamily="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+    lv.style.cursor='pointer';
+    lv.style.backgroundColor='#8eb6d2'
+
+}
+grid.style.display = "none";
+volumn.style.display="none";
+slider.style.display="none";
+choose.style.display="none";
+BGM.style.display="none";
+currentmode.style.display="none";
+let start,inbutt,sx,sy,clicked,stx,sty,count,postindex,preindex,modegame,last=-1;
+let node=[];let edge=[];let endgame=[];let lock=[];let record=[];
+modegame=0;
+
+for(let i=1;i<=30;i++)
+{
+    endgame.push(0);
+    lock.push(0);
+}
+
+c.strokeStyle='black';
+function drawall()
+{
+    c.lineWidth=5;
+    c.clearRect(0,0,innerWidth,innerHeight)
+    c.strokeStyle='gray';
+    edge.forEach(e=>{
+        c.beginPath();
+        c.moveTo(node[e[0]][0],node[e[0]][1]);
+        c.lineTo(node[e[1]][0],node[e[1]][1]);
+        c.strokeStyle='gray';
+        if(e[2]==1)
+            c.strokeStyle='#8eb6d2';
+        c.stroke();
+    })
+    for(let i=0;i<node.length;i++)
+    {
+        e=node[i];
+        c.beginPath();
+        c.strokeStyle='white';
+        c.arc(e[0],e[1],11,0,Math.PI*2,false);
+        c.stroke();
+        c.fillStyle='#2672a8';
+        if(inbutt==1&&ind==e)
+            c.fillStyle='gray';
+        if(preindex==i)
+            c.fillStyle='aquamarine';
+        if(e[2]===3)
+            c.fillStyle='aquamarine';
+        c.arc(e[0],e[1],10,0,Math.PI*2,false);
+        c.fill();
+    }
+}
+
+function round()
+{   
+    let x=0,y=0;
+    sign.textContent=`ROUND LEVEL ${roundind+1}`;
+    next.setAttribute("style","display:block");
+    back.setAttribute("style","display:block");
+    retry.setAttribute("style","display:block");
+    mode.style.display='none';
+    grid.style.display='none';
+    slider.style.display='none';
+    volumn.style.display='none';
+    choose.style.display="none";
+    BGM.style.display="none";
+    currentmode.style.display="node";
+    c.clearRect(0,0,canvas.width,canvas.height);
+    for(let i=0;i<json[0][roundind].length;i++)
+    {
+        if(json[0][roundind][i][2]!=3)
+            json[0][roundind][i][2]=0;
+    }
+    for(let i=0;i<json[1][roundind].length;i++)
+    {
+        if(json[1][roundind][i][2]!=1 && json[0][roundind][0][2]==3)
+            json[1][roundind][i][2]=0;
+    }
+    node=json[0][roundind];
+    edge=json[1][roundind];
+    start=inbutt=sx=sy=clicked=stx=sty=count=pt=0;
+    preindex=postindex=-1;
+    drawall();
+}
+
+canvas.addEventListener('mousemove',(mousemove)=>
+{
+    if(lock[roundind]==1)
+        return;
+    if(roundind<0)
+        return;
+    console.log(roundind)
+    sx=0;sy=0;
+    x = mousemove.clientX;
+    y = mousemove.clientY;
+    inbutt=0;
+    for(let i=0;i<node.length;i++)
+    {
+        let e=node[i];
+        let len=(x-e[0])*(x-e[0])+(y-e[1])*(y-e[1]);
+        len=Math.sqrt(len);
+        if((len<=15&&clicked==1)||(len<=15&&i==preindex&&clicked==0)||(len<=15&&preindex==-1))
+        {
+            inbutt=1
+            sx=e[0];
+            sy=e[1];
+            ind=e;
+            postindex=i;
+            if(modegame==1)
+            {
+                for(let i=0;i<edge.length;i++)
+                {
+                    e=edge[i];
+                    if(((node[e[0]][0]==stx&&node[e[0]][1]==sty&&node[e[1]][0]==sx&&node[e[1]][1]==sy)
+                    ||(node[e[0]][0]==sx&&node[e[0]][1]==sy&&node[e[1]][0]==stx&&node[e[1]][1]==sty))
+                    &&(edge[i][2]==0))
+                    {
+                        preindex=postindex;
+                        drawall();
+                        node[preindex][2]=0;
+                        node[postindex][2]=1;
+                        ++count;
+                        edge[i][2]=1;
+                        stx=sx;
+                        sty=sy;
+                    }
+                    drawall();
+                }
+            }
+        }
+    };
+    if(inbutt)
+    {
+        document.body.style.cursor='pointer';
+        drawall();
+    }
+    else
+    {
+        drawall();
+        document.body.style.cursor='context-menu';
+    }
+    if(clicked)
+    {
+        drawall();
+        c.beginPath();
+        c.moveTo(stx,sty);
+        c.lineTo(x,y);
+        c.strokeStyle='#8eb6d2';
+        c.stroke();
+    }
+})
+canvas.addEventListener('click',(click)=>
+{
+    if(modegame!=0)
+        return;
+    if(lock[roundind]==1)
+        return;
+    if(roundind<0)
+        return;
+    if(inbutt&&clicked==0)
+    {
+        stx=sx;
+        sty=sy;
+        clicked=1;
+        if(start==0&&roundind!=100)    
+        {
+            int=setInterval(time,1000);
+        }
+        start=1;
+    }
+    else if(inbutt&&clicked==1)
+        clicked=0;
+    if(inbutt&&clicked==0)
+    {
+        for(let i=0;i<edge.length;i++)
+        {
+            e=edge[i];
+            if(((node[e[0]][0]==stx&&node[e[0]][1]==sty&&node[e[1]][0]==sx&&node[e[1]][1]==sy)
+            ||(node[e[0]][0]==sx&&node[e[0]][1]==sy&&node[e[1]][0]==stx&&node[e[1]][1]==sty))
+            &&(edge[i][2]==0))
+            {
+                preindex=postindex;
+                drawall();
+                node[preindex][2]=0;
+                node[postindex][2]=1;
+                ++count;
+                edge[i][2]=1;
+                stx=sx;
+                sty=sy;
+            }
+            drawall();
+        }
+    }
+    if(count==edge.length)
+    {
+        if(roundind!=100)
+        {
+            lock[roundind]=1;
+            endgame[roundind]=1;
+            if(roundind>last)
+                last=roundind;
+            for(let i=0;i<node.length;i++)
+                node[i][2]=3;
+            drawall();
+            clearInterval(int);
+            showdiag();
+            console.log(roundind)
+        }
+        else
+        {
+            if(matches<10)
+            {
+                for(let i=0;i<node.length;i++)
+                    node[i][2]=3;
+                drawall();
+                ++matches;
+            }
+            else
+            {
+                record.push(pt);
+                clearInterval(int);
+                showdiag();
+                console.log(roundind)
+            }
+        }
+    }
+})
+canvas.addEventListener('mousedown',(mousedown)=>
+{
+    if(modegame!=1)
+        return;
+    if(lock[roundind])
+        return;
+    if(roundind<0)
+        return;
+    if(inbutt&&clicked==0)
+    {
+        stx=sx;
+        sty=sy;
+        clicked=1;
+        if(start==0&&roundind!=100)    
+        {
+            int=setInterval(time,1000);
+        }
+        start=1;
+    }
+    else if(inbutt&&clicked==1)
+        clicked=0;
+})
+canvas.addEventListener('mouseup',()=>
+{
+    if(modegame==1)
+        clicked=0;
+    if(roundind<0)
+        return
+    if(count==edge.length)
+    {
+        if(roundind!=100)
+        {
+            lock[roundind]=1;
+            endgame[roundind]=1;
+            if(roundind>last)
+                last=roundind;
+            for(let i=0;i<node.length;i++)
+                node[i][2]=3;
+            drawall();
+            clearInterval(int);
+            showdiag();
+            console.log(roundind)
+
+        }
+        else
+        {
+            console.log(matches);
+            if(matches<10)
+            {
+                for(let i=0;i<node.length;i++)
+                    node[i][2]=3;
+                drawall();
+                ++matches;
+            }
+            else
+            {
+                clearInterval(int);
+                record.push(pt);
+                showdiag();
+                console.log(roundind)
+            }
+        }
+    }
+})
+
+function time()
+{
+    pt+=1;
+    document.querySelector('.point').textContent=`${pt}s`;
+    if(roundind==100)
+    {
+        sign.textContent=`${pt}s`
+    }
+}
+
+function showdiag()
+{
+    let diag=document.querySelector('dialog');
+    diag.showModal();
+    let retry=document.querySelector('.close');
+    retry.addEventListener('click',()=>
+    {
+        document.body.style.cursor='context-menu';
+    })
+}
+
+
+//drawopening
+
+function main()
+{
+    next.setAttribute("style","display:none");
+    back.setAttribute("style","display:none");
+    retry.setAttribute("style","display:none");
+    mode.style.display='flex';
+    grid.style.display='none';
+    slider.style.display='none';
+    volumn.style.display='none';
+    choose.style.display="none";
+    BGM.style.display="none";
+    currentmode.style.display="none";
+    roundind=-1;
+    c.clearRect(0,0,canvas.width,canvas.height);
+}
+
+function level()
+{
+    next.setAttribute("style","display:none");
+    back.setAttribute("style","display:none");
+    retry.setAttribute("style","display:none");
+    grid.style.display="grid"
+    mode.style.display="none";
+    slider.style.display='none';
+    volumn.style.display='none';
+    choose.style.display="none";
+    BGM.style.display="none";
+    currentmode.style.display="none";
+    c.clearRect(0,0,canvas.width,canvas.height);
+    c.beginPath();
+    roundind=-2;
+    c.strokeStyle='black';
+    c.lineWidth=2;
+    let i=0;
+    for (let x of grid.childNodes)
+    {
+        ++i;
+        if(endgame[i-1]==1)  
+        {
+            x.style.Color='black';
+        }   
+        else
+        {
+            if(i-1>last+1)
+                x.style.opacity='0.5'
+        }
+        if(i-1==last+1)
+        {
+            x.style.color='black';  
+            x.style.opacity='1';
+        }
+    }
+}
+main();
+let dem=0;
+
+// show the board
+let menu=document.querySelector('.menu');
+let levels=document.querySelector('.levels');
+let settings=document.querySelector('.settings');
+let backweb=document.querySelector('.backweb');
+document.querySelector('.showbutt').addEventListener('click',()=>{
+    let board=document.querySelector('.board');
+    ++dem;
+    if(dem%2!=0)
+    {
+        board.setAttribute("style","right:100%")
+        menu.setAttribute("style","display:none")
+        levels.setAttribute("style","display:none")
+        settings.setAttribute("style","display:none")
+        backweb.style.display='none'
+    }
+    else
+    {
+        board.setAttribute("style","right:80%")
+        menu.setAttribute("style","display:block")
+        levels.setAttribute("style","display:block")
+        settings.setAttribute("style","display:block")
+        backweb.style.display='block';
+    }
+})
+
+//functions
+
+menu.addEventListener('click',()=>
+{
+    clearInterval(int);
+    sign.textContent="MAIN MENU";
+    main();
+})
+levels.addEventListener('click',()=>
+{
+    clearInterval(int);
+    sign.textContent="ALL LEVELS";
+    console.log('1')
+    level();
+})
+
+settings.addEventListener('click',()=>{
+    clearInterval(int);
+    roundind=-3;
+    next.setAttribute("style","display:none");
+    back.setAttribute("style","display:none");
+    retry.setAttribute("style","display:none");
+    mode.style.display="none";
+    grid.style.display="none";
+    sign.textContent="SETTING";
+    volumn.style.display="block";
+    slider.style.display="block";
+    choose.style.display="block";
+    BGM.style.display="block";
+    currentmode.style.display="block";
+    c.clearRect(0,0,canvas.width,canvas.height)
+})
+
+next.addEventListener('click',()=>{
+    if(last!=roundind)
+        return;
+    if(roundind==100)
+        return;
+    if(roundind<29)
+    {
+        roundind++;
+        round();
+    }
+})
+
+back.addEventListener('click',()=>{
+    if(roundind==100)
+        return;
+    if(roundind>0)
+    {
+        roundind--;
+        round();
+    }
+})
+
+retry.addEventListener('click',()=>{
+    for(let i=0;i<node.length;i++)
+        node[i][2]=0;
+    for(let i=0;i<edge.length;i++)
+        edge[i][2]=0;
+    start=inbutt=sx=sy=clicked=stx=sty=count=pt=0;
+    clearInterval(int);
+    preindex=postindex=-1;
+    lock[roundind]=0;
+    drawall();
+})
+
+play.addEventListener('click',()=>
+{
+    if(last+1<30)
+        roundind=last+1;
+    round();
+})
+
+
+slider.addEventListener('change',()=>
+{
+    if(choose.value=='BGM 1')
+        vid1.volume=slider.value/100;
+    if(choose.value=='BGM 2')
+        vid2.volume=slider.value/100;
+    if(choose.value=='BGM 3')
+        vid3.volume=slider.value/100;
+})
+
+choose.addEventListener('change',()=>
+{
+    BGM.textContent=`${choose.value} is playing`;
+    if(choose.value=='BGM 1')
+    {
+        vid1.play();
+        vid2.pause();
+        vid3.pause();
+    }
+    if(choose.value=='BGM 2')
+    {
+        vid1.pause();
+        vid2.play();
+        vid3.pause();
+    }
+    if(choose.value=='BGM 3')
+    {
+        vid1.pause();
+        vid2.pause();
+        vid3.play();
+    }
+})
+
+currentmode.addEventListener('click',()=>
+{
+    modegame=1-modegame;
+    if(modegame==0)
+        currentmode.textContent="MODE GAME:DEFAULT";
+    else
+        currentmode.textContent="MODE GAME:PULL"
+})
+
+
+
